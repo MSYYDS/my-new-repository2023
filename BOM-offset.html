@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: burlywood;
+        }
+
+        div p {
+            margin-left: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p>1</p>
+    </div>
+    <script>
+        var box = document.querySelector('.box');
+        var p = document.querySelector('p');
+        console.log(p.offsetParent);
+        console.log(p.offsetLeft);
+        console.log(p.offsetTop);
+        console.log(box.offsetWidth);
+        console.log(box.offsetHeight);
+    </script>
+</body>
+
+</html>

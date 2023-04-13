@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function nian() {
+            var Nian = prompt('请输入你求的年份');
+            if (run(Nian) == true) {
+                alert('这是闰年，二月份有29天');
+            } else {
+                alert('这是平年，二月份有28天');
+            }
+        }
+        nian();
+        function run(Nian) {
+            var B = false;
+            if (Nian % 4 == 0 && Nian % 100 != 0 || Nian % 400 == 0) {
+                B = true;
+            }
+            return B;
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

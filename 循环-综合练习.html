@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双重for双循环</title>
+    <script>
+        // var num = prompt('一行你要的星星数')
+        // var num1 = prompt('你要几行？')
+        // var sum = ''
+        // for (var i = 1; i <= num1; i++) {
+        //     for (var e = 1; e <= num; e++) {
+        //         sum = sum + '★'
+        //     }
+        //     sum = sum + '\n'
+        // }
+        // alert(sum)
+
+        // var A = prompt('从几个星星递减');
+        // var star = ''
+        // for (var i = 1; i <= A; i++) {
+        //     for (var e = i; e <= A; e++) {
+        //         star = star + '★'
+        //     }
+        //     star = star + '\n'
+        // }
+        // alert(star)
+
+        // var result = ''
+        // for (var i = 1; i <= 9; i++) {
+        //     for (var k = 1; k <= i; k++) {
+        //         result += k + '×' + i + '=' + k * i + '\t'
+        //     }
+        //     result += '\n'
+        // }
+        // alert(result)
+
+        // var num = 0
+        // var sum = 0
+        // for (var i = 1; i <= 100; i++) {
+        //     if ((i - 3) % 10 == 0) {
+        //         continue;
+        //     } else {
+        //         sum += i;
+        //     }
+        // }
+        // console.log(sum)
+
+
+        var deposit = 100
+        for (var i = 1; i <= Infinity; i++) {
+            var input = prompt('请选择你要办理的业务\n1、存钱\n2、取钱\n3、显示余额\n4、退出')
+            if (input == 1) {
+                var deposit1 = prompt('请输入你要存钱的金额')
+                deposit += parseFloat(deposit1)
+                alert('您现在余额是' + deposit);
+            } else if (input == 2) {
+                var withdrawal = prompt('请输入你要取的金额')
+                if (withdrawal > deposit) {
+                    alert('您的余额不足')
+                } else {
+                    deposit = deposit - withdrawal;
+                    alert('取出金额为' + withdrawal)
+                }
+            } else if (input == 3) {
+                alert('您的余额为' + deposit)
+            } else if (input == 4) {
+                alert('您现在正在退出')
+                break;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

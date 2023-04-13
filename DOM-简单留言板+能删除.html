@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        textarea {
+            margin-top: 200px;
+            margin-left: 200px;
+            border: 1px solid #3fa1de;
+            outline: none;
+        }
+
+        ul {
+            margin-top: 20px;
+            margin-left: 200px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            width: 300px;
+            height: 30px;
+            background-color: #d58989;
+        }
+
+        li a {
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <ul>
+    </ul>
+
+    <!-- 脚本编写 -->
+    <script>
+        //获取元素
+        var textare = document.querySelector('textarea');
+        var btn = document.querySelector('button');
+        var ul = document.querySelector('ul');
+
+        btn.onclick = function () {
+            if (textare.value == '') {
+                alert('请输入内容')
+                return false;
+            } else {
+                var li = document.createElement('li');
+                li.innerHTML = textare.value + '<a hre="javascript:;">删除</a>';
+                ul.insertBefore(li, ul.children[0]);
+                var as = document.querySelectorAll('a');
+                for (var i = 0; i < as.length; i++) {
+                    as[i].onclick = function () {
+                        console.log(this.parentNode);
+                        ul.removeChild(this.parentNode);
+                    }
+                }
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

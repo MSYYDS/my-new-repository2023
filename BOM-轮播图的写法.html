@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: relative;
+            margin: 20% 50%;
+            width: 500px;
+            height: 400px;
+            background-color: #ca9393;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+        ul {
+            position: absolute;
+            left: 0;
+            width: 600%;
+            height: 100%;
+
+        }
+
+        .r,
+        .l {
+            display: none;
+            position: absolute;
+            width: 24px;
+            top: 40px;
+            font-size: 18px;
+            color: aliceblue;
+            text-align: center;
+            background-color: #151515;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .r {
+            right: 0;
+            top: 50%;
+            margin-top: -20px;
+
+        }
+
+        .l {
+            left: 0;
+            top: 50%;
+            margin-top: -20px;
+
+        }
+
+        ul li,
+        ul li img {
+            width: 500px;
+            height: 100%;
+            background-color: #5a79ce;
+        }
+
+        ul li,
+        ol li {
+            float: left;
+            list-style: none;
+        }
+
+        ol {
+            position: absolute;
+            top: 380px;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+        }
+
+        ol li {
+            width: 8px;
+            height: 8px;
+            border: 2px solid rgb(229, 229, 229, .5);
+            border-radius: 50%;
+
+        }
+
+        .current {
+            background-color: #fff;
+        }
+    </style>
+    <script src="js/animate.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="r">R</div>
+        <div class="l">L</div>
+        <ul>
+            <li><img src="images/tiger.jpg" alt=""></li>
+            <li><img src="images/tiger.jpg" alt=""></li>
+            <li><img src="images/tiger.jpg" alt=""></li>
+            <li><img src="images/tiger.jpg" alt=""></li>
+            <li><img src="images/tiger.jpg" alt=""></li>
+            <li><img src="images/tiger.jpg" alt=""></li>
+        </ul>
+        <ol>
+        </ol>
+    </div>
+
+
+    <script>
+        var box = document.querySelector('.box');
+        var left = box.querySelector('.l');
+        var right = box.querySelector('.r');
+        var flag = 1;
+        left.addEventListener('click', function () {
+            if (flag == 6) {
+                flag = 1;
+            }
+            animate(ul, -flag * boxWidth);
+            flag++;
+        })
+        var flag1 = 1;
+        right.addEventListener('click', function () {
+            if (ul.offsetLeft < 0) {
+                flag1 = -1;
+            }
+            animate(ul, flag1 * boxWidth);
+            flag1++;
+        })
+
+        box.addEventListener('mouseenter', function () {
+            left.style.display = 'block';
+            right.style.display = 'block';
+        })
+
+        box.addEventListener('mouseleave', function () {
+            left.style.display = 'none';
+            right.style.display = 'none';
+        })
+
+        //生产小圆圆
+
+        var ul = box.querySelector('ul');
+        var ol = box.querySelector('ol');
+        var boxWidth = box.offsetWidth;
+
+        for (var i = 0; i < ul.children.length; i++) {
+            var li = document.createElement('li');
+            li.setAttribute('index', i);
+            ol.appendChild(li);
+            ol.children[0].className = 'current';
+            li.addEventListener('click', function () {
+                for (var i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = '';
+                }
+                this.className = 'current';
+                var index = this.getAttribute('index');
+                // num = index;
+                // circle = index;
+                console.log(boxWidth);
+                console.log(index);
+                animate(ul, -index * boxWidth);
+            })
+
+            // var arr = ul.querySelectorAll('li');
+            // var timer1 = setInterval(function () {
+
+            // }, 2000)
+            // var index = ol.children[i].getAttribute(index);
+            // console.log(index);
+            // console.log(boxWidth);
+            // animate(ul, -index * boxWidth);
+        }
+        // for (var i = 1; i <= 6; i++) {
+        //     animate(ul, -i * boxWidth);
+        //     if (i = 6) {
+        //         i = 1;
+        //     }
+        // }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

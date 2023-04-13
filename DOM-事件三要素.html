@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* @media(hover: hover) { */
+        a:hover {
+            border: 5px solid red;
+        }
+
+        /* } */
+    </style>
+
+
+</head>
+
+<body>
+    <a href="#"><button id="q">我的世界</button></a>
+    <script>
+        var happen = document.getElementById('q');  //事件源
+        happen.onclick = function () {              //事件类型
+            alert('真精彩啊！！！');                 //事件处理程序
+        }
+
+    </script>
+</body>
+
+</html>

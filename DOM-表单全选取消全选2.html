@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+        } */
+
+        .box {
+            margin: 200px 40%;
+            width: 200px;
+            height: 200px;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <table>
+            <thead>
+                <th><input type="checkbox" id="sth"></th>
+                <th>2</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>8</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        var sth = document.getElementById('sth');
+        var j_sbt = document.querySelector('tbody').querySelectorAll('input');
+        sth.onclick = function () {
+            console.log(this.checked);
+            for (var i = 0; i < j_sbt.length; i++)
+                j_sbt[i].checked = this.checked;
+        }
+
+        // for (var j = 0; j < sbts.length; j++) {
+        //     sbts[j].onclick = function () {
+        //         var flag = true;
+        //         for (var i = 0; i < sbts.length; i++) {
+        //             if (!sbts[i].checked) {
+        //                 flag = false;
+        //                 break;
+        //             }
+        //         }
+        //         sth.checked = flag;
+        //     }
+
+        // }
+
+
+        for (var i = 0; i < j_sbt.length; i++)
+            j_sbt[i].onclick = function () {
+                var flag = true;
+                for (var i = 0; i < j_sbt.length; i++) {
+                    if (!j_sbt[i].checked) {
+                        flag = false;
+                        break;
+                    }
+                }
+                sth.checked = flag;
+            }
+
+
+    </script>
+
+</body>
+
+</html>

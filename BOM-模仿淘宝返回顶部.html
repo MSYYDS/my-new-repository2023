@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+
+
+    <!-- 第二遍写 -->
+    <script>
+        var sliderbar = document.querySelector('.slider-bar');
+        var goBack = document.querySelector('.goBack');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var doc = document.documentElement;
+        var bannertop = banner.offsetTop;
+        var sliderbartop = sliderbar.offsetTop - bannertop;
+        var maintop = main.offsetTop;
+
+        function animate(obj, target, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var step = (target - obj.pageYOffset) / 10;
+                step < 0 ? Math.ceil(step) : Math.floor(step);
+
+                if (obj.pageYOffset == target) {
+                    callback && callback();
+                    clearInterval(obj.timer);
+                }
+                window.scroll(0, window.pageYOffset + step);
+            }, 15)
+        }
+
+        document.addEventListener('scroll', function () {
+            if (window.pageYOffset >= bannertop) {
+                sliderbar.style.position = 'fixed';
+                sliderbar.style.top = sliderbartop + 'px';
+            } else {
+                sliderbar.style.top = 300 + 'px';
+                sliderbar.style.position = 'absolute';
+            }
+
+            if (window.pageYOffset >= maintop) {
+                goBack.style.display = 'block';
+            } else {
+                goBack.style.display = 'none';
+            }
+
+            // 动画
+
+        })
+
+        goBack.addEventListener('click', function () {
+            animate(window, 0);
+        })
+
+
+
+    </script>
+
+
+
+
+
+
+    <!-- 第一遍写，弄了不少时间； -->
+    <!-- <script>
+        var sliderbar = document.querySelector('.slider-bar');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var header = document.querySelector('.header');
+        var goBack = document.querySelector('.goBack');
+        var bannertop = banner.offsetTop;
+        var main_top = main.offsetTop;
+        var sliderbartop = sliderbar.offsetTop - bannertop;
+        // console.log(slider_bar_top);
+        // console.log(main_top);
+        // console.log(banner_top);
+        document.addEventListener('scroll', function () {
+            var window_scroll = window.pageYOffset;
+            console.log(window_scroll);
+            if (window_scroll >= 170) {
+                sliderbar.style.position = 'fixed';
+                sliderbar.style.top = sliderbartop + 'px';
+            } else {
+                sliderbar.style.top = 300 + 'px';
+                sliderbar.style.position = 'absolute';
+            }
+
+            if (window_scroll >= main_top) {
+                goBack.style.display = 'block';
+            } else {
+                goBack.style.display = 'none';
+            }
+
+
+        })
+
+        goBack.addEventListener('click', function () {
+            // 的写个动画；
+        })
+
+
+
+    </script> -->
+</body>
+
+</html>

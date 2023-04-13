@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <th><input type="checkbox"></th>
+            <th>商品</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></input></td>
+                <td>手机</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>电脑</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var j_sht = document.querySelector('thead').querySelector('input');
+        var j_sbt = document.querySelector('tbody').querySelectorAll('input');
+        j_sht.onclick = function () {
+            console.log(this.checked)
+            for (var i = 0; i < j_sbt.length; i++) {
+                j_sbt[i].checked = this.checked;
+            }
+        }
+        for (var i = 0; i < j_sbt.length; i++)
+            j_sbt[i].onclick = function () {
+                var flag = true;
+                for (var i = 0; i < j_sbt.length; i++) {
+                    if (!j_sbt[i].checked) {
+                        flag = false;
+                        break;
+                    }
+                }
+                j_sht.checked = flag;
+            }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

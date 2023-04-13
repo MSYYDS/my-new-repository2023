@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            margin: 20% 30%;
+            width: 400px;
+            /* height: 30px; */
+        }
+
+        table thead {
+            /* width: 400px; */
+            height: 30px;
+            background-color: aliceblue;
+        }
+
+        table th,
+        td {
+            width: 25%;
+            text-align: center;
+            border: 1px solid #ccc;
+
+        }
+
+        table tr {
+            height: 30px;
+            background-color: #b78b8b;
+        }
+
+        td a {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <th>姓名</th>
+            <th>科目</th>
+            <th>成绩</th>
+            <th>操作</th>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <!-- 开始写脚本 -->
+    <script>
+        // 获取元素
+        //表格数据
+        var datas = [{
+            name: '魏璎珞',
+            subject: 'JavaScript',
+            score: 100
+        }, {
+            name: '弘历',
+            subject: 'JavaScript',
+            score: 98
+        }, {
+            name: '傅恒',
+            subject: 'JavaScript',
+            score: 99
+        }, {
+            name: '明玉',
+            subject: 'JavaScript',
+            score: 88
+        }, {
+            name: '大猪蹄子',
+            subject: 'JavaScript',
+            score: 0
+        }];
+
+        var datass = datas.join('-');
+        console.log(datass);
+
+        var tbody = document.querySelector('tbody');
+
+        //遍历数据获取元素
+        for (var i = 0; i < datas.length; i++) {
+            var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            for (var k in datas[i]) {
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][k];
+                tr.appendChild(td);
+
+            }
+            var td = document.createElement('td');
+            td.innerHTML = '<a hre="javascript:;" id="删除">删除</a>';
+            tr.appendChild(td);
+        }
+
+        //获取a
+        var as = document.querySelectorAll('#删除');
+        // var trs = document.querySelectorAll('tr');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                tbody.removeChild(this.parentNode.parentNode);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

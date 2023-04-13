@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1加到100</title>
+    <script>
+        var num = 0;
+        for (var i = 1; i <= 100; i++) {
+            num = num + i;
+            console.log(num)
+        }
+        console.log(num)
+
+        var even = 0;
+        var odd = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                even = even + i
+            } else {
+                odd = odd + i
+            }
+        }
+        console.log('1到100偶数相加是' + even);
+        console.log('1到100奇数相加是' + odd)
+
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

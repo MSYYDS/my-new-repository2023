@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="laohu">老虎</button>
+    <button id="tiger">狮子</button>
+    <img src="images/laohu.jpg" alt="" title="老虎">
+    <script>
+        var laohu = document.querySelector('#laohu');
+        var tiger = document.querySelector('#tiger');
+        var img = document.querySelector('img');
+        laohu.onclick = function () {
+            img.src = 'images/laohu.jpg';
+            img.title = '老虎';
+        }
+        tiger.onclick = function () {
+            img.src = 'images/tiger.jpg';
+            img.title = '狮子';
+        }
+
+        //本页面因为英文单词拼写错误耽误大量时间，艹！！！
+    </script>
+</body>
+
+</html>

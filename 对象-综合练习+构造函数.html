@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Hero(name, type, blood, attack) {
+            this.name = name;
+            this.type = type;
+            this.blood = blood;
+            this.attack = attack;
+        }
+        var idl = new Hero('廉颇', '坦克', 5999, 500);
+        console.log(idl);
+
+        //电脑对象
+        function Computer(color, type, weight, brand) {
+            this.color = color;
+            this.type = type;
+            this.weight = weight;
+            this.brand = brand;
+            this.func = function (funct) {
+                console.log(funct);
+            }
+
+        }
+        var f = new Computer(1, 2, 3, 4);
+        f.func('看电影，打游戏，敲代码');
+        console.log(f);
+
+        //按钮对象
+        function Computer(width, height, bccolor) {
+            this.width = width;
+            this.height = height;
+            this.bccolor = bccolor;
+            this.func = function (funct) {
+                console.log(funct);
+            }
+
+        }
+        var k = new Computer(1, 2, 3);
+        k.func('点击行为');
+        // for (var k in k) {
+        //     console.log(k[k]);
+        // }
+        console.log(k);
+
+
+        //遍历对象
+        var A = {
+            name: '我的世界',
+            sex: '男',
+            age: 19
+        }
+        for (var k in A) {
+            console.log(A[k]);
+        }
+
+
+        //利用new 创建对象
+        var func = new Object();
+        func.name = '我的世界';
+        console.log(func.name);
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

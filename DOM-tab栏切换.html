@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        .tab {
+            margin: 400px auto;
+            width: 300px;
+            height: 200px;
+        }
+
+        .tab div {
+            width: 100%;
+            /* height: 100px; */
+        }
+
+        .tab_list {
+            height: 50px;
+            background-color: #ccc;
+            border-bottom: 1px solid #c18c8c;
+        }
+
+        ul {
+            /* margin-left: 0; */
+            padding-inline-start: 0;
+        }
+
+        ul li {
+            /* display: inline-block; */
+            /* margin-left: 0; */
+            float: left;
+            width: 25%;
+            height: 100%;
+            line-height: 50px;
+            text-align: center;
+            list-style-type: none;
+            cursor: pointer;
+
+
+            /* justify-content: center; */
+            /* margin: auot 0; */
+            /* height: 50px; */
+            /* border: 1px solid #ccc; */
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li>0000</li>
+                <li>0000</li>
+                <li>0000</li>
+                <li>0000</li>
+            </ul>
+        </div>
+
+        <div class="tab_botm">
+            <div class="item">1111</div>
+            <div class="item">2222</div>
+            <div class="item">3333</div>
+            <div class="item">4444</div>
+        </div>
+    </div>
+
+    <script>
+        var lists = document.querySelectorAll('li');
+        var items = document.querySelector('.tab_botm').querySelectorAll('.item');
+        for (var i = 0; i < lists.length; i++) {
+            lists[i].setAttribute('index', i);
+            lists[i].onclick = function () {
+                for (var i = 0; i < lists.length; i++) {
+
+                    lists[i].style.backgroundColor = '';
+                }
+                this.style.backgroundColor = '#c18c8c';
+                var index = this.getAttribute('index');
+                console.log(index);
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = '';
+                }
+                items[index].style.display = 'block';
+            }
+        }
+
+
+        //节点
+        var its = document.querySelector('.tab_botm');
+        console.log(its.childNodes);
+
+
+
+
+
+    </script>
+</body>
+
+</html>

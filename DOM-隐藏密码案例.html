@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 100px auto;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+        }
+
+        .box input {
+            width: 400px;
+            height: 40px;
+            border: 0px;
+            outline: none;
+        }
+
+        .box label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .box img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for=""><img src="images/tiger.jpg" alt="" id="see"></label>
+        <input type="password" value="" id="pwd">
+    </div>
+    <script>
+        var pwd = document.getElementById('pwd');
+        var see = document.getElementById('see');
+        var flag = 0;
+        see.onclick = function () {
+            if (flag == 0) {
+                pwd.type = 'text';
+                flag = 1;
+            } else {
+                pwd.type = 'password';
+                flag = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>
