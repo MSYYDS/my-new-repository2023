@@ -99,8 +99,7 @@
         <div class="r">R</div>
         <div class="l">L</div>
         <ul>
-            <li><img src="images/tiger.jpg" alt=""></li>
-            <li><img src="images/tiger.jpg" alt=""></li>
+            <li><img src="images/laohu.jpg" alt=""></li>
             <li><img src="images/tiger.jpg" alt=""></li>
             <li><img src="images/tiger.jpg" alt=""></li>
             <li><img src="images/tiger.jpg" alt=""></li>
@@ -115,56 +114,109 @@
         var box = document.querySelector('.box');
         var left = box.querySelector('.l');
         var right = box.querySelector('.r');
-        var flag = 1;
-        left.addEventListener('click', function () {
-            if (flag == 6) {
-                flag = 1;
-            }
-            animate(ul, -flag * boxWidth);
-            flag++;
-        })
-        var flag1 = 1;
+        var ul = box.querySelector('ul');
+        var ol = box.querySelector('ol');
+        var boxWidth = box.offsetWidth;
+
+       
+
+        //右侧按钮功能实现,添加了节流阀；
+
+        var flag1 = 0;
+        var circle = 0;
         right.addEventListener('click', function () {
-            if (ul.offsetLeft < 0) {
-                flag1 = -1;
+            if (flag){
+                flag=false;
+                flag1++;
+            if (flag1 == 6) {
+                ul.style.left = 0;
+                flag1 = 1;
             }
-            animate(ul, flag1 * boxWidth);
-            flag1++;
+            animate(ul, -flag1 * boxWidth,function(){
+                flag =true;
+            });
+            circle++;
+            if(circle == ol.children.length) {
+                circle = 0
+            }
+            for(var i = 0 ; i < ol.children.length;i++){
+                ol.children[i].className = '';
+            }
+            ol.children[circle].className = 'current';
+            }
         })
 
+
+        //左侧按钮写法
+        //节流阀
+        var flag = true;
+        left.addEventListener('click', function () {
+           if(flag){
+            flag = false;
+            if (flag1 == 0) {
+                flag1 = ul.children.length - 1;
+                ul.style.left = -flag1 * boxWidth + 'px' ;
+            }
+            flag1--;
+            animate(ul, -flag1 * boxWidth,function(){
+                flag = true;
+            });
+           circle--;
+            if(circle < 0) {
+                circle = ol.children.length - 1;
+            }
+            for(var i = 0 ; i < ol.children.length ;i++){
+                ol.children[i].className = '';
+            }
+            ol.children[circle].className = 'current';
+           }
+
+        })
+
+        //鼠标经过离开小按钮显示
         box.addEventListener('mouseenter', function () {
             left.style.display = 'block';
             right.style.display = 'block';
+            clearInterval(timer);
         })
 
         box.addEventListener('mouseleave', function () {
             left.style.display = 'none';
             right.style.display = 'none';
+            timer = setInterval(function(){
+                right.click();
+            },2000)
+
         })
 
         //生产小圆圆
-
-        var ul = box.querySelector('ul');
-        var ol = box.querySelector('ol');
-        var boxWidth = box.offsetWidth;
 
         for (var i = 0; i < ul.children.length; i++) {
             var li = document.createElement('li');
             li.setAttribute('index', i);
             ol.appendChild(li);
-            ol.children[0].className = 'current';
             li.addEventListener('click', function () {
                 for (var i = 0; i < ol.children.length; i++) {
                     ol.children[i].className = '';
                 }
                 this.className = 'current';
                 var index = this.getAttribute('index');
-                // num = index;
-                // circle = index;
+                circle = index;
+                flag1 = index;
+                console.log(circle);
                 console.log(boxWidth);
                 console.log(index);
                 animate(ul, -index * boxWidth);
             })
+        }
+
+            ol.children[0].className = 'current';
+            var first = ul.children[0].cloneNode(true);
+            ul.appendChild(first);
+
+           var timer = setInterval(function(){
+                right.click();
+            },2000)
 
             // var arr = ul.querySelectorAll('li');
             // var timer1 = setInterval(function () {
@@ -174,13 +226,27 @@
             // console.log(index);
             // console.log(boxWidth);
             // animate(ul, -index * boxWidth);
-        }
+       
         // for (var i = 1; i <= 6; i++) {
         //     animate(ul, -i * boxWidth);
         //     if (i = 6) {
         //         i = 1;
         //     }
         // }
+    
+    
+    
+    
+        //左侧按钮错误写法
+        // var flag = 0;
+        // left.addEventListener('click', function () {
+        //     flag++;
+        //     if (flag == 6) {
+        //         ul.style.left = 0;
+        //         flag = 1;
+        //     }
+        //     animate(ul, -flag * boxWidth);
+        // })
 
 
 
