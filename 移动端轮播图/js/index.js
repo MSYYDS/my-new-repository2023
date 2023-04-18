@@ -1,3 +1,8 @@
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function () {
+        FastClick.attach(document.body);
+    }, false);
+}
 window.addEventListener('load', function () {
     var focus = document.querySelector('.focus');
     var ul = focus.querySelector('ul');
@@ -27,7 +32,6 @@ window.addEventListener('load', function () {
             var translatex = -index * w;
             ul.style.transform = 'translateX(' + translatex + 'px)';
         }
-        console.log(index);
 
 
         //小圆点跟随移动
@@ -49,6 +53,7 @@ window.addEventListener('load', function () {
         var translatex = -index * w + moveX;
         ul.style.transform = 'translateX(' + translatex + 'px)';
         flag = true;
+        e.preventDefault();
     })
 
     var flag = true;//节流阀，哈哈哈，我自己想的，哇嘎嘎嘎；
@@ -79,6 +84,26 @@ window.addEventListener('load', function () {
             ul.style.transform = 'translateX(' + translatex + 'px)';
         }, 2000)
     })
+
+    var goBack = document.querySelector('.goBack');
+    var nav = document.querySelector('nav');
+    var search_index = document.querySelector('.search-index');
+    var search_index_Top = search_index.offsetHeight;
+    var navTop = nav.offsetTop;
+    document.addEventListener('scroll', function () {
+        if (window.pageYOffset >= navTop - search_index_Top) {
+            goBack.style.display = 'block';
+        } else {
+            goBack.style.display = 'none';
+        }
+    })
+
+    goBack.addEventListener('click', function () {
+        window.scroll(0, 0);
+
+    })
+
+
 
 })
 
