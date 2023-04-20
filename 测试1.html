@@ -12,51 +12,33 @@
             padding: 0;
         }
 
-        .box {
+        body {
             position: relative;
-            margin: 20% 50%;
-            width: 500px;
-            height: 400px;
-            background-color: #ca9393;
-            transform: translate(-50%, -50%);
-            overflow: hidden;
         }
 
-        .r,
-        .l {
-            display: block;
+        div {
             position: absolute;
-            width: 24px;
-            top: 40px;
-            font-size: 18px;
-            color: aliceblue;
-            text-align: center;
-            background-color: #151515;
-            cursor: pointer;
-        }
-
-        .r {
-            right: 0;
-            top: 50%;
-            margin-top: -20px;
-
-        }
-
-        .l {
-            left: 0;
-            top: 50%;
-            margin-top: -20px;
-
+            left: 500px;
+            top: 20px;
+            width: 200px;
+            height: 200px;
+            background-color: #af6969;
         }
     </style>
     <script src="js/animate.js"></script>
 </head>
 
 <body>
-    <div class="box">
-        <div class="r">R</div>
-        <div class="l">L</div>
-    </div>
+    <div></div>
+    <button>点击</button>
+    <script>
+        var div = document.querySelector('div');
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function () {
+            animate(div, 0);
+        })
+
+    </script>
 </body>
 
 </html>
