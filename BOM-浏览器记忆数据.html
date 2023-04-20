@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <input type="text">
+    <button class="submit">提交</button>
+    <button class="del">删除</button>
+
+    <script>
+        var ipt = document.querySelector('input');
+        var submit = document.querySelector('.submit');
+        var del = document.querySelector('.del');
+
+        submit.addEventListener('click', function () {
+            var val = ipt.value;
+            sessionStorage.setItem('uname', val);
+            sessionStorage.setItem('pwd', val);
+            localStorage.setItem("myName", val);
+            console.log(sessionStorage.getItem('uname', val));
+            console.log(sessionStorage.getItem('pwd', val));
+            console.log(localStorage.getItem("myName", val));
+        })
+
+        del.addEventListener('click', function () {
+            localStorage.removeItem('myName');
+        })
+    </script>
+</body>
+
+</html>
