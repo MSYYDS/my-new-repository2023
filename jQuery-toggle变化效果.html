@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin-left: 40%;
+            margin-top: 10%;
+            width: 200px;
+            height: 200px;
+            background-color: #754e4e;
+            transition: all .3s;
+        }
+
+        .current {
+            background-color: #daabab;
+            transform: rotate(360deg);
+
+        }
+    </style>
+    <script src="js/jQuery.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        $(function () {
+            $("div").click(function () {
+                $(this).toggleClass("current");
+            })
+        })
+    </script>
+</body>
+
+</html>

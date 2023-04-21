@@ -22,7 +22,8 @@
         }
 
         .nav {
-            margin: 100px;
+
+            margin-left: 40%;
         }
 
         .nav>li {
@@ -63,6 +64,7 @@
             background-color: #FFF5DA;
         }
     </style>
+    <script src="js/jQuery.min.js"></script>
 </head>
 
 <body>
@@ -127,19 +129,29 @@
 
     <!-- 现在写脚本 -->
     <script>
-        //获取元素
-        var nav = document.querySelector('.nav');
-        var lis = nav.children;
-        //事件执行过程
-        for (var i = 0; i < lis.length; i++) {
-            lis[i].onmouseover = function () {
-                this.children[1].style.display = 'block';
-            }
-            lis[i].onmouseout = function () {
-                this.children[1].style.display = 'none';
-            }
-        }
+        // //获取元素
+        // var nav = document.querySelector('.nav');
+        // var lis = nav.children;
+        // //事件执行过程
+        // for (var i = 0; i < lis.length; i++) {
+        //     lis[i].onmouseover = function () {
+        //         this.children[1].style.display = 'block';
+        //     }
+        //     lis[i].onmouseout = function () {
+        //         this.children[1].style.display = 'none';
+        //     }
+        // }
 
+        // $(".nav>li").hover(function () {
+        //     $(this).children("ul").slideToggle(100);
+        // })
+
+
+        $(".nav>li").hover(function () {
+            $(this).children("ul").slideDown(100);
+        }, function () {
+            $(this).children("ul").slideUp(100);
+        })
     </script>
 </body>
 
