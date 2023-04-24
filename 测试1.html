@@ -25,6 +25,7 @@
             background-color: #af6969;
         }
     </style>
+    <script src="js/jQuery.min.js"></script>
     <script src="js/animate.js"></script>
 </head>
 
@@ -34,9 +35,23 @@
     <script>
         var div = document.querySelector('div');
         var btn = document.querySelector('button');
+        var flag = true;
         btn.addEventListener('click', function () {
-            animate(div, 0);
+            // 动画函数实现反复横跳
+            // if (flag) {
+            //     flag = false;
+            //     animate(div, 0);
+            // } else {
+            //     flag = true;
+            //     animate(div, 500)
+            // }
+
+            // toggle又是怎么样的呢？
         })
+
+        // $("button").click(function () {
+        //     $("div").animate(0);
+        // })
 
     </script>
 </body>
