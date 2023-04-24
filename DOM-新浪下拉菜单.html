@@ -142,16 +142,16 @@
         //     }
         // }
 
-        // $(".nav>li").hover(function () {
-        //     $(this).children("ul").slideToggle(100);
-        // })
-
-
         $(".nav>li").hover(function () {
-            $(this).children("ul").slideDown(100);
-        }, function () {
-            $(this).children("ul").slideUp(100);
+            $(this).children("ul").stop().slideToggle(200);
         })
+
+
+        // $(".nav>li").hover(function () {
+        //     $(this).children("ul").slideDown(100);
+        // }, function () {
+        //     $(this).children("ul").slideUp(100);
+        // })
     </script>
 </body>
 
