@@ -2,7 +2,12 @@ $(function () {
     //两个全选按钮的操作
     $(".checkall").click(function () {
         console.log($(this).prop("checked"));
-        $(".j-checkbox , .checkall").prop("checked", $(this).prop("checked"));
+        $(".j-checkbox , .checkall").prop("checked", $(this).prop("checked")).parents(".cart-item").addClass("check-cart-item");
+        if ($(".j-checkbox , .checkall").prop("checked")) {
+            $(".j-checkbox , .checkall").parents(".cart-item").addClass("check-cart-item");
+        } else (
+            $(".j-checkbox , .checkall").parents(".cart-item").removeClass("check-cart-item")
+        )
     })
 
     //单个按钮的操作
@@ -13,13 +18,19 @@ $(function () {
         } else {
             $(".checkall").prop("checked", false);
         }
+
+        if ($(this).prop("checked")) {
+            $(this).parents(".cart-item").addClass("check-cart-item");
+        } else {
+            $(this).parents(".cart-item").removeClass("check-cart-item");
+        }
     })
 
     //然后是购买数量的控制
     $(".increment").click(function () {
-        var n = $(".itxt").val();
+        var n = $(this).siblings(".itxt").val();
         n++;
-        $(".itxt").val(n);
+        $(this).siblings(".itxt").val(n);
         // console.log($(this).parent().parent().siblings().eq(2).text());
 
         //单价随数量增加变化
@@ -27,16 +38,17 @@ $(function () {
         // console.log(p);
         var price = (n * p).toFixed(2);
         $(this).parents(".p-num").siblings(".p-sum").text("￥" + price);
+        getSum();
     })
 
     $(".decrement").click(function () {
 
-        var n = $(".itxt").val();
+        var n = $(this).siblings(".itxt").val();
         if (n == 1) {
             return false;
         }
         n--;
-        $(".itxt").val(n);
+        $(this).siblings(".itxt").val(n);
 
         //单价随数量减少变化
         var p = $(this).parents(".p-num").siblings(".p-price").text().substr(1);
@@ -44,6 +56,7 @@ $(function () {
         // console.log($(this).parents(".p-num").siblings(".p-price").html());
         var price = (n * p).toFixed(2);
         $(this).parents(".p-num").siblings(".p-sum").text("￥" + price);
+        getSum();
     })
 
     //用户输入，修改n；
@@ -53,6 +66,41 @@ $(function () {
         var p = $(this).parents(".p-num").siblings(".p-price").text().substr(1);
         var price = (n * p).toFixed(2);
         $(this).parents(".p-num").siblings(".p-sum").text("￥" + price);
+        getSum();
+    })
+
+    //接着就是总和，这里因为出现变化就得总和一次，所以封装函数好一些；
+    getSum();
+    function getSum() {
+        var count = 0; //这里算总的数量；
+        var prices = 0;//这里算总的价钱；
+        $(".itxt").each(function (i, ele) {
+            // console.log(i);
+            // console.log(ele);
+            count += parseInt($(ele).val());
+        })
+        $(".p-sum").each(function (i, ele) {
+            prices += parseFloat($(ele).text().substr(1));
+        })
+        $(".price-sum em").html("￥" + prices.toFixed(2));
+        $(".amount-sum em").html(count);
+
+    }
+
+    //删除商品模块；
+    $(".p-action").click(function () {
+        $(this).parents(".cart-item").remove();
+        getSum();
+    })
+    $(".remove-batch").click(function () {
+        if ($(".j-checkbox:checked")) {
+            $(".j-checkbox:checked").parents(".cart-item").remove();
+        }
+        getSum();
+    })
+    $(".clear-all").click(function () {
+        $(".cart-item-list").empty();
+        getSum();
     })
 
 
